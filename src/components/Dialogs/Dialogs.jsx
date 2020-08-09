@@ -21,7 +21,7 @@ export const Dialogs = (props) => {
         let body = e.target.value;
         props.store.dispatch(updateNewMessageBodyCreator(body));
     }
-    let messagesEl = props.state.messages.map(mes => <Message message={mes.message}/>)
+    let messagesEl = state.messages.map(mes => <Message message={mes.message}/>)
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>

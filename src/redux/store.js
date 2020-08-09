@@ -32,14 +32,14 @@ let store = {
         sidebar: {},
 
     },
-    _calSubscriber() {
+    _callSubscriber() {
         console.log('123')
     },
     getState() {
         return this._state
     },
     subscribe(observer) {
-        this._calSubscriber = observer
+        this._callSubscriber = observer
     },
     dispatch(action) {
 
@@ -47,7 +47,7 @@ let store = {
         this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
         this._state.sidebar = sidebarReducer(this._state.sidebar, action);
 
-        this._calSubscriber(this._state)
+        this._callSubscriber(this._state)
 
     }
 }
