@@ -1,0 +1,26 @@
+.left_bar li{
+    height: auto;
+    color:black;
+    background-color: darkorchid;
+    width: 100%;
+    text-align: center;
+}
+.left_bar li a{
+    color:white;
+}
+
+.activeLink{
+    color: indigo !important;
+}
+
+.nav_wrapper{
+    height: 100%;
+    display: block;
+}
+
+nav{
+    grid-area: n;
+    background-color: darkorchid;
+    height: 100% !important;
+}
+
