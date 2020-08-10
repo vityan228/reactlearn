@@ -9,13 +9,14 @@ export const MyPosts = (props) => {
     let posts = props.postData.map(p => <Post message={p.message} likesCount={p.likesCount}/>)
     let newPostElement = React.createRef()
 
-    let addPosts = () => {
-        props.dispatch(addPostActionCreator())
+    let onAddPosts = () => {
+        props.addPost()
     }
 
     let onPostChange = () => {
-        let action = updateNewPostActionCreator(newPostElement.current.value)
-        props.dispatch(action)
+        let text = newPostElement.current.value;
+        props.updateNewPostText(text)
+
     }
 
     return (
@@ -29,7 +30,7 @@ export const MyPosts = (props) => {
                         value={props.newPostText}/>
                 </div>
                 <div>
-                    <button onClick={addPosts}>add</button>
+                    <button onClick={onAddPosts}>add</button>
                 </div>
             </div>
             <div className={s.posts}>
