@@ -1,36 +1,14 @@
 const FOLLOW = 'FOLLOW'
 const UNFOLLOW = 'UNFOLLOW'
 const SET_USERS = 'SET_USERS'
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
+const SET_TOTAL_COUNT = 'SET_TOTAL_COUNT'
 
 let initialState = {
-    users: [
-        // {
-        //     id: 1,
-        //     photoUrl: 'https://cs6.pikabu.ru/post_img/2015/06/19/11/1434739887_1710191108.jpg',
-        //     followed: false,
-        //     fullName: 'Jora',
-        //     status: 'salam',
-        //     location: {city: 'Minsk', country: 'Belarus'}
-        // },
-        // {
-        //     id: 2,
-        //     photoUrl: 'https://cs6.pikabu.ru/post_img/2015/06/19/11/1434739887_1710191108.jpg',
-        //     followed: true,
-        //     fullName: 'kolya',
-        //     status: 'rttt',
-        //     location: {city: 'Russia', country: 'Rostov'}
-        // },
-        // {
-        //     id: 3,
-        //     photoUrl: 'https://cs6.pikabu.ru/post_img/2015/06/19/11/1434739887_1710191108.jpg',
-        //     followed: true,
-        //     fullName: 'masha',
-        //     status: 'salagdgdgm',
-        //     location: {city: 'China', country: 'Pekin'}
-        // },
-    ],
-
-
+    users: [],
+    pageSize:5,
+    totalUsersCount: 0,
+    currentPage:1,
 };
 
 export const usersReducer = (state = initialState, action) => {
@@ -58,9 +36,17 @@ export const usersReducer = (state = initialState, action) => {
                 }),
 
             }
-        case SET_USERS:
+        case SET_USERS: {
+
+            return {...state, users: [...action.users]}
+        }
+        case SET_TOTAL_COUNT: {
+
+            return {...state, totalUsersCount: action.total}
+        }
+        case SET_CURRENT_PAGE:
             //debugger
-            return {...state, users: [ ...state.users, ...action.users]}
+            return {...state, currentPage: action.pageNumber}
 
         default:
             return state;
@@ -71,3 +57,5 @@ export const usersReducer = (state = initialState, action) => {
 export const followAc = (userId) => ({type: FOLLOW, userId})
 export const unfollowAc = (userId) => ({type: UNFOLLOW, userId})
 export const setUsersAc = (users) => ({type: SET_USERS, users})
+export const setTotalUsersCountAc = (total) => ({type: SET_TOTAL_COUNT, total})
+export const setCurrentPageAc = (pageNumber) => ({type: SET_CURRENT_PAGE, pageNumber})
